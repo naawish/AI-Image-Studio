@@ -1,0 +1,22 @@
+name: Build Release
+on: [push]
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          pip install pyinstaller pillow rembg[cpu] customtkinter onnxruntime opencv-python tkinterdnd2-universal
+      - name: Build EXE
+        run: |
+          pyinstaller --noconfirm --onefile --windowed --collect-all rembg --collect-all onnxruntime --name "AI_Studio_v2" src/main.py
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: AI-Studio-Windows
+          path: dist/AI_Studio_v2.exe

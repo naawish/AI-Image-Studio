@@ -1,0 +1,6 @@
+customtkinter
+rembg[cpu]
+pillow
+opencv-python
+tkinterdnd2-universal
+onnxruntime
