@@ -14,7 +14,7 @@ jobs:
           pip install pyinstaller pillow rembg[cpu] customtkinter onnxruntime opencv-python tkinterdnd2-universal
       - name: Build EXE
         run: |
-          pyinstaller --noconfirm --onefile --windowed --collect-all rembg --collect-all onnxruntime --name "AI_Studio_v2" src/main.py
+          pyinstaller --noconfirm --onefile --windowed --collect-all rembg --collect-all onnxruntime --collect-all customtkinter --copy-metadata pymatting --copy-metadata tqdm --copy-metadata regex --copy-metadata requests --copy-metadata packaging --name "AI_Studio_v2" src/main.py
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
